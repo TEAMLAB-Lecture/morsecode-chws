@@ -51,9 +51,8 @@ def is_help_command(user_input):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
-
-    return result
+    lowered_user_input = user_input.lower()
+    return True if lowered_user_input == "h" or lowered_user_input == "help" else False
     # ==================================
 
 
@@ -118,7 +117,6 @@ def is_validated_morse_code(user_input):
 
     return result
     # ==================================
-
 
 
 def get_cleaned_english_sentence(raw_english_sentence):
@@ -261,11 +259,10 @@ def main():
     print("Morse Code Program!!")
     # ===Modify codes below=============
 
-
-
     # ==================================
     print("Good Bye")
     print("Morse Code Program Finished!!")
+
 
 if __name__ == "__main__":
     main()
