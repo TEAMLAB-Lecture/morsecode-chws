@@ -238,20 +238,36 @@ def encoding_sentence(english_sentence):
         >>> mc.encoding_sentence("Hi! Hi!")
         '.... ..  .... ..'
     """
-    result = ''
+    result = []
     for word in english_sentence.split():
         for char in word:
             if char not in ".,!?":
-                result += encoding_character(char.upper()) + ' '
-        result += ' '
-    return result.strip()
+                result.append(encoding_character(char) + ' ')
+        result.append(' ')
+    return "".join(result).strip()
+    # return ''.join(
+    #     [encoding_character(char.upper()) + ' ' for word in get_cleaned_english_sentence(english_sentence).split()
+    #      for char in word]).strip()
+
+
+def is_exit_command(user_input):
+    return user_input == '0'
 
 
 def main():
     print("Morse Code Program!!")
-    # ===Modify codes below=============
-
-    # ==================================
+    while True:
+        user_input = input("Input your message(H - Help, 0 - Exit): ")
+        if is_help_command(user_input):
+            get_help_message()
+        elif is_exit_command(user_input):
+            break
+        elif is_validated_english_sentence(user_input):
+            print(encoding_sentence(user_input))
+        elif is_validated_morse_code(user_input):
+            print(decoding_sentence(user_input))
+        else:
+            print("Wrong Input")
     print("Good Bye")
     print("Morse Code Program Finished!!")
 
