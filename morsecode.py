@@ -80,12 +80,10 @@ def is_validated_english_sentence(user_input):
         >>> mc.is_validated_english_sentence("This is Gachon University.")
         True
     """
-    # ===Modify codes below=============
-    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
-
-    return result
-    # ==================================
+    for char in user_input:
+        if char in "0123456789_@#$%^&*()-+=[]{}\"';:\\|`~":
+            return False
+    return not user_input.translate(str.maketrans(".,!?", "    ")).replace(' ', '') == ''
 
 
 def is_validated_morse_code(user_input):
