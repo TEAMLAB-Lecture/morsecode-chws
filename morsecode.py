@@ -238,12 +238,13 @@ def encoding_sentence(english_sentence):
         >>> mc.encoding_sentence("Hi! Hi!")
         '.... ..  .... ..'
     """
-    # ===Modify codes below=============
-    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
-
-    return result
-    # ==================================
+    result = ''
+    for word in english_sentence.split():
+        for char in word:
+            if char not in ".,!?":
+                result += encoding_character(char.upper()) + ' '
+        result += ' '
+    return result.strip()
 
 
 def main():
