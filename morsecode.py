@@ -191,7 +191,7 @@ def encoding_character(english_character):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     morse_code_dict = get_morse_code_dict()
-    return morse_code_dict[english_character]
+    return morse_code_dict[english_character.upper()]
     # ==================================
 
 
@@ -212,12 +212,12 @@ def decoding_sentence(morse_sentence):
         >>> mc.decoding_sentence("-.-- --- ..-  .- .-. .  ..-. ")
         'YOU ARE F'
     """
-    result = ''
+    result = []
     for word in morse_sentence.split('  '):
         for char in word.split():
-            result += decoding_character(char)
-        result += ' '
-    return result.strip()
+            result.append(decoding_character(char))
+        result.append(' ')
+    return "".join(result).strip()
 
 
 def encoding_sentence(english_sentence):
