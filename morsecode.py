@@ -135,12 +135,7 @@ def get_cleaned_english_sentence(raw_english_sentence):
         >>> mc.get_cleaned_english_sentence("Fine, Thank you. and you?")
         'Fine Thank you and you'
     """
-    # ===Modify codes below=============
-    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
-
-    return result
-    # ==================================
+    return raw_english_sentence.translate(str.maketrans(".,!?", "****")).replace('*', '').strip()
 
 
 def decoding_character(morse_character):
